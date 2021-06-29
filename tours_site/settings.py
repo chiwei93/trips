@@ -9,13 +9,9 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-import environ
+
 from pathlib import Path
 from os import getenv
-
-env = environ.Env()
-
-environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,12 +21,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env("IS_DEVELOPMENT", default=True)
+DEBUG = getenv("IS_DEVELOPMENT", default=True)
 
 ALLOWED_HOSTS = [
+    'localhost',
+    '0.0.0.0',
+    getenv("APP_HOST")
 ]
 
 
@@ -89,11 +88,11 @@ WSGI_APPLICATION = 'tours_site.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env("DATABASE_NAME"),
-        "HOST": env("DATABASE_HOST"),
-        "PORT": env("DATABASE_PORT"),
-        "USER": env("DATABASE_USER"),
-        "PASSWORD": env("DATABASE_PASSWORD")
+        'NAME': getenv("DATABASE_NAME"),
+        "HOST": getenv("DATABASE_HOST"),
+        "PORT": getenv("DATABASE_PORT"),
+        "USER": getenv("DATABASE_USER"),
+        "PASSWORD": getenv("DATABASE_PASSWORD")
     }
 }
 

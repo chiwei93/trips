@@ -1,5 +1,5 @@
 import stripe
-import environ
+from os import getenv
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -8,10 +8,7 @@ from .models import Booking
 from tours.models import Tour
 from reviews.models import Review
 
-env = environ.Env()
-environ.Env.read_env()
-
-stripe.api_key = env('STRIPE_KEY')
+stripe.api_key = getenv('STRIPE_KEY')
 
 # Create your views here.
 @login_required
