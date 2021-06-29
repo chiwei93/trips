@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} About Us | Trips {% endblock %}
+
+{% block css_files %}
+	<link rel="stylesheet" href="{% static 'information/css/information.css' %}">
+	<link rel="stylesheet" href="{% static 'information/css/about_us.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="inner_container">
+		<header>
+			{% include 'includes/navigation.html' %}
+		</header>
+		
+		<div class="content_container">
+			<h1 class="about_heading">
+				About Trips
+			</h1>
+
+			<div class="about_header_img_container">
+				<img src="{% static 'information/images/paris.jpg' %}" alt="Paris">
+
+				<h4>Changing how the world travel</h4>
+
+				<p>
+					We’re on a journey to transform ordinary trips into extraordinary ones. We are your guide, bringing you personal experiences. Wherever your travels take you, we’ll show you the unique and unmissable things to do in your destination. We're changing the way people connect to the places they visit so anyone can create their dream vacation. It’s your journey, your way.
+				</p>
+			</div>
+
+			<div class="about_content_container">
+				<div class="about_content_img_container">
+					<img src="{% static 'information/images/swiss.jpg' %}" alt="Switzerland">
+				</div>
+
+				<div class="about_content_container_content">
+					<p>Travel made easy</p>
+
+					<p class="about_gray">Say goodbye to stress</p>
+
+					<p class="about_gray">Browse and book, and we'll tell you when to be where. You can just focus on having a great time.</p>
+				</div>
+			</div>
+
+			<div class="about_content_container_reverse">
+				<div class="about_content_img_container">
+					<img src="{% static 'information/images/australia.jpg' %}" alt="Australia">
+				</div>
+				
+				<div class="about_content_container_content">
+					<p>Never settle for average</p>
+
+					<p class="about_gray">
+					Incredible experiences — that’s what we’re all about. You’ll find unbeatable activities for all ages and interests on GetYourGuide.
+					</p>
+				</div>
+			</div>
+
+			<div class="about_content_container">
+				<div class="about_content_img_container">
+					<img src="{% static 'information/images/spain.jpg' %}" alt="Spain">
+				</div>
+
+				<div class="about_content_container_content">
+					<p>Don’t waste a moment</p>
+
+					<p class="about_gray">Memories aren’t made while standing in line. Book ahead and skip the lines at the world’s biggest attractions.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

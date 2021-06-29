@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Bookings | Trips {% endblock %}
+
+{% block css_files %}
+	<link rel="stylesheet" href="{% static 'bookings/css/bookings_nav.css' %}">
+	<link rel="stylesheet" href="{% static 'bookings/css/bookings.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="inner_container">
+		<header>
+			{% include 'includes/navigation.html' %}
+		</header>
+		
+		<div class="content_container">
+			{% if messages %}
+				<ul class="alert_messages">
+					{% for message in messages %}
+						<li class="alert_message alert_{{ message.tags }}">
+							{{ message }}
+							<button class="alert_btn_close">
+								<i class="fas fa-times"></i>
+							</button>
+						</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+
+			<section class="bookings_section">
+				<h1>YOUR BOOKINGS:</h1>
+
+				{% if bookings|length_is:"0" %}
+					<p class="bookings_no_booking">
+						No bookings found. Browse our tours and start making bookings now.
+					</p>
+				{% else %}
+					<ul class="bookings_list">
+						{% for booking in bookings %}
+							<li class="bookings_item">
+								<h3>BOOKING #{{ booking.id }}</h3>
+
+								<p class="bookings_tour_title">
+									{{ booking.tour.name }}
+								</p>
+
+								<div class="bookings_item_content">
+									<ul class="bookings_item_info_list">
+										<li class="bookings_info_item">
+											<i class="far fa-calendar"></i>
+											<span class="info_text">START</span>
+											<span class="info_value">
+												{{ booking.tour.start_date }}
+											</span>
+										</li>
+										<li class="bookings_info_item">
+											<i class="far fa-calendar"></i>
+											<span class="info_text">END</span>
+											<span class="info_value">
+												{{ booking.tour.end_date }}
+											</span>
+										</li>
+										<li class="bookings_info_item">
+											<i class="fas fa-users"></i>
+											<span class="info_text">PEOPLE</span>
+											<span class="info_value">
+												{{ booking.num_of_people }} participants
+											</span>
+										</li>
+									</ul>
+
+									<div class="bookings_btn_container">
+										<a href="{% url 'booking' booking.id %}" class="bookings_btn_details">DETAILS</a>
+									</div>
+								</div>
+							</li>
+						{% endfor %}
+					</ul>	
+				{% endif %}
+			</section>
+		</div>
+	</div>
+{% endblock %}
+

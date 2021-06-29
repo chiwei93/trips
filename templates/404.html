@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Page not found | Trips {% endblock %}
+
+{% block css_files %}
+	<link rel="stylesheet" href="{% static 'bookings/css/bookings_nav.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="inner_container">
+		<header>
+			{% include 'includes/navigation.html' %}
+		</header>
+		
+		<div class="content_container">
+			<section class="error_section">
+				Page not found. (404) Please press the button below to redirect back to the home page
+
+				<div>
+					<a href="{% url 'home' %}" class="error_btn_home">Home</a>
+				</div>
+			</section>
+		</div>
+	</div>
+{% endblock %}

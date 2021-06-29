@@ -1,0 +1,177 @@
+.nav_logo:hover,
+.nav_logo:active,
+.nav_btn_toggle:hover,
+.nav_btn_toggle:active,
+.nav_btn_toggle.active {
+  color: var(--color-secondary);
+}
+
+.form_section {
+  margin: 3em 0 4em;
+}
+
+.form_left {
+  display: none;
+}
+
+.form_right h2 {
+  margin-bottom: 1em;
+  color: var(--color-primary);
+  font-size: 2.5rem;
+}
+
+.form_control {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+
+.form_control input {
+  outline: none;
+  padding: 0.5em 0.8em;
+  color: var(--color-primary);
+  border-radius: 0.5em;
+  border: 1px solid var(--color-gray);
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form_control input::placeholder {
+  color: var(--color-gray);
+  transition: color 0.3s;
+}
+
+.form_control input:focus {
+  border-color: var(--color-primary);
+}
+
+.form_control.error input {
+  background-color: rgb(255, 232, 224);
+  color: var(--color-black);
+}
+
+.form_control.error input,
+.form_control.error input:focus {
+  border-color: var(--color-error);
+}
+
+.form_control input:focus::placeholder {
+  color: var(--color-primary);
+}
+
+.form_control.error input::placeholder,
+.form_control.error input:focus::placeholder {
+  color: var(--color-error);
+}
+
+.errorlist {
+  margin-top: 0.5em;
+  font-size: 0.8rem;
+  color: var(--color-error);
+}
+
+.errorlist li:not(:last-child) {
+  margin-bottom: 0.5em;
+}
+
+.form_right_text {
+  margin: 2em 0;
+  font-size: 0.9rem;
+  color: var(--color-gray);
+}
+
+.form_right_text a {
+  color: var(--color-primary);
+  transition: color 0.3s;
+}
+
+.form_right_text a:hover,
+.form_right_text a:active {
+  color: var(--color-secondary);
+}
+
+.form_btn_container {
+  position: relative;
+  display: flex;
+}
+
+.form_btn_submit {
+  all: unset;
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.form_btn_submit:hover,
+.form_btn_submit:active {
+  background-color: var(--color-primary);
+}
+
+@media only screen and (min-width: 800px) {
+  .nav_link:hover,
+  .nav_link:active {
+    color: var(--color-secondary);
+  }
+
+  .form_section {
+    display: flex;
+    border-radius: 1em;
+    box-shadow: 0 0 0.8em 0.1em rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+
+  .form_left {
+    display: block;
+    flex: 0.5;
+    padding: 3em;
+    background-color: var(--color-secondary);
+    position: relative;
+    text-align: center;
+  }
+
+  .form_left h2 {
+    font-size: 2.5rem;
+    color: var(--color-white);
+    margin-bottom: 1em;
+  }
+
+  .form_left img {
+    width: 100%;
+    margin: 1em 0 3em;
+  }
+
+  .form_left_text a {
+    transition: color 0.3s;
+  }
+
+  .form_left_text a:hover,
+  .form_left_text a:active {
+    color: var(--color-white);
+  }
+
+  .form_right {
+    flex: 0.5;
+    padding: 3em;
+  }
+
+  .form_right h2,
+  .form_right_text {
+    display: none;
+  }
+
+  .form_btn_container {
+    margin-top: 3em;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+	.form_left h2 {
+		font-size: 3rem;
+	}
+}

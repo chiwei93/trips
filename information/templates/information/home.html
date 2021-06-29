@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Home | Trips {% endblock %}
+
+{% block css_files %}
+	<link rel="stylesheet" href="{% static 'information/css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="inner_container">
+		<header id="header">
+			{% include 'includes/navigation.html' %}
+
+			<img src="{% static "information/images/hero.jpg" %}" alt="hero" class="home_hero">
+		</header>
+
+		<div class="content_container">
+			<section class="heading_container">
+				<h1>Book and Experience Unique Tours</h1>
+
+				<div class="heading_description_container">
+					<p>Trips offers a broad and exciting range of tours all people of all ages to experience and enjoy</p>
+
+					<a href="{% url 'tours' %}" class="home_explore_more">Explore More</a>
+				</div>
+			</section>
+		</div>
+
+		<section class="home_reasons_container">
+			<ul class="home_reasons_list">
+				<li class="home_reasons_item">
+					<img src="{% static 'information/images/price.png' %}" alt="Price">
+
+					<div>
+						Affordable Price Guarantee
+					</div>
+				</li>
+
+				<li class="home_reasons_item">
+					<img src="{% static 'information/images/offers.png' %}" alt="Offer">
+
+					<div>
+						Best Prices and Best Offers
+					</div>
+				</li>
+
+				<li class="home_reasons_item">
+					<img src="{% static 'information/images/destination.png' %}" alt="Destination">
+
+					<div>
+						Wide Variety of Destinations
+					</div>
+				</li>
+
+				<li class="home_reasons_item">
+					<img src="{% static 'information/images/experience.png' %}" alt="Experience">
+					
+					<div>
+						High Experience in Travel Field
+					</div>
+				</li>
+			</ul>
+		</section>
+
+		<div class="content_container">
+			<section class="home_stories_section">
+				<div class="home_stories_container">
+					<div class="home_stories_img_container">
+						<img src="{% static 'information/images/venice.jpg' %}" alt="Venice">
+					</div>
+
+					<div class="home_stories_description">
+						<p class="home_stories_paragraph">
+							Venice could be the one place on earth where the dream matches up to reality. Embarking on an exploration of the Floating City is an experience not to be missed. Whether you’re traveling by water taxi or walking through the city’s famous St. Mark’s Square, you’ll be completely beguiled by Venice’s charm and mysteries.
+						</p>
+
+						<p class="home_stories_paragraph">
+							You’ll experience Venice exactly as you want to with our many tours. From night tours, where the city changes its mood under the reflection of the cool moonlight, to tours that focus specifically on Venetian attractions and food and wine traditions, the choice is yours!
+						</p>
+					</div>
+				</div>
+				
+				<div class="home_stories_container row_reverse">
+					<div class="home_stories_img_container">
+						<img src="{% static 'information/images/bali.jpg' %}" alt="Bali">
+					</div>
+
+					<div class="home_stories_description">
+						<p class="home_stories_paragraph">
+							Bali is amongst the most favorite tourist destinations in the world, and as you will get to explore the on this 5 day Bali tour, you will get to see why. For the duration of this tour, you will be covering breathtaking beauty of regions like Ubud, Kintamani, Benoa, and Mengwi. 
+						</p>
+
+						<p class="home_stories_paragraph">
+							The tour takes you to attractions like Lake Batur, Mount Batur, Batuan Temple, Taman Ayun Temple, and Tanah Lot Temple. Also, you will get several amazing experiences like touring the Monkey Forest, watching the sunset at the Tanah Lot, exploring the artistic colonies of Bali and a great sunset dinner cruise at the Benoa Harbor.
+						</p>
+					</div>
+				</div>
+
+			</section>
+		
+		</div>
+	</div>
+{% endblock %}

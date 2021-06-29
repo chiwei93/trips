@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Successful Booking | Trips {% endblock %}
+
+{% block css_files %}
+	<link rel="stylesheet" href="{% static 'bookings/css/bookings_nav.css' %}">
+	<link rel="stylesheet" href="{% static 'bookings/css/confirm_booking.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="inner_container">
+		<header>
+			{% include 'includes/navigation.html' %}
+		</header>
+		
+		<div class="content_container">
+			{% if messages %}
+				<ul class="alert_messages">
+					{% for message in messages %}
+						<li class="alert_message alert_{{ message.tags }}">
+							{{ message }}
+							<button class="alert_btn_close">
+								<i class="fas fa-times"></i>
+							</button>
+						</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+
+			<section class="confirm_section">
+				<div class="confirm_content_container">
+					<h1>BOOKING #{{ booking.id }}</h1>
+
+					<div class="confirm_list">
+						<div class="confirm_facts_item">
+							<i class="fas fa-suitcase"></i>
+							<span class="fact_name">TOUR</span>
+							<span class="fact_value">{{ tour.name }}</span>
+						</div>
+
+						<div class="confirm_facts_item">
+							<i class="fas fa-user"></i>
+							<span class="fact_name">USER</span>
+							<span class="fact_value">{{ user.username }}</span>
+						</div>
+
+						<div class="confirm_facts_item">
+							<i class="fas fa-users"></i>
+							<span class="fact_name">PEOPLE</span>
+							<span class="fact_value">{{ participants }}</span>
+						</div>
+
+						<div class="confirm_facts_item">
+							<i class="fas fa-dollar-sign"></i>
+							<span class="fact_name">TOTAL PRICE</span>
+							<span class="fact_value">${{ price|floatformat }}</span>
+						</div>
+					</div>
+
+					<div class="confirm_btn_container">
+						<a href="{% url 'tours' %}" class="confirm_btn mar-left">TOURS</a>
+						<a href="{% url 'booking' booking.id %}" class="confirm_btn mar-left">DETAILS</a>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+{% endblock %}

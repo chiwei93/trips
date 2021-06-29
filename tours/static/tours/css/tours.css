@@ -1,0 +1,97 @@
+.tours_cards_container {
+  display: grid;
+  grid-gap: 3em;
+  grid-template-columns: 1fr;
+  margin: 2em 0 4em;
+}
+
+.tour_card_container {
+  position: relative;
+  padding: 2.5em;
+  border-radius: 1em;
+  box-shadow: 0.1em 0.1em 0.8em rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+  color: var(--color-gray);
+  display: flex;
+  flex-direction: column;
+}
+
+.tour_card_container h3 {
+  margin-bottom: 1em;
+  font-size: 1.4rem;
+  color: var(--color-black);
+}
+
+.tour_date {
+  margin-bottom: 1em;
+  color: var(--color-secondary);
+}
+
+.tour_icons_list {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5em;
+}
+
+.tour_icons_item:not(:last-child) {
+  margin-right: 2em;
+}
+
+.tour_icons_item i {
+  margin-right: 0.5em;
+  color: var(--color-primary);
+}
+
+.tour_summary {
+  margin-bottom: 3em;
+}
+
+.tour_card_container img {
+  width: 100%;
+  border-radius: 1em;
+  margin-bottom: 2em;
+  margin-top: auto;
+  height: 13rem;
+}
+
+.tour_card_btn_container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tour_price_text {
+  margin-bottom: 0.3em;
+  font-size: 0.8rem;
+}
+
+.tour_price {
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  color: var(--color-black);
+}
+
+.tour_link {
+  border: 1px solid var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.5em;
+  font-weight: bold;
+  border-radius: 0.5em;
+  transition: color 0.3s, background-color 0.3s;
+  font-size: 1.1rem;
+  color: var(--color-primary);
+}
+
+.tour_link:hover,
+.tour_link:active {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+@media only screen and (min-width: 600px) {
+  .tours_cards_container {
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  }
+}

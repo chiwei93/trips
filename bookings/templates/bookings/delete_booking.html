@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Cancel Booking #{{ booking.id }} | Trips {% endblock %}
+
+{% block css_files %}
+	<link rel="stylesheet" href="{% static 'bookings/css/bookings_nav.css' %}">
+	<link rel="stylesheet" href="{% static 'bookings/css/booking.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="inner_container">
+		<header>
+			{% include 'includes/navigation.html' %}
+		</header>
+		
+		<div class="content_container">
+			<section class="booking_section">
+				<div class="booking_header">
+					<div class="booking_header_img_container">
+						<img src="{% static "bookings/images/booking.png" %}" alt="Header">
+					</div>
+
+					<h1>DELETE BOOKING #{{ booking.id }}:</h1>
+				</div>
+
+				<div class="booking_details_container">
+					<h3>BOOKING DETAILS:</h3>
+
+					<ul class="booking_details_list">
+						<li class="booking_details_item">
+							<i class="fas fa-bus"></i>
+							<span class="details_text">TOUR NAME</span>
+							<span class="details_value">{{ booking.tour.name }}</span>
+						</li>
+
+						<li class="booking_details_item">
+							<i class="far fa-calendar"></i>
+							<span class="details_text">START DATE</span>
+							<span class="details_value">{{ booking.tour.start_date|date:"d F Y" }}</span>
+						</li>
+
+						<li class="booking_details_item">
+							<i class="far fa-calendar"></i>
+							<span class="details_text">END DATE</span>
+							<span class="details_value">{{ booking.tour.end_date|date:"d F Y" }}</span>
+						</li>
+
+						<li class="booking_details_item">
+							<i class="far fa-clock"></i>
+							<span class="details_text">BOOKING TIME</span>
+							<span class="details_value">{{ booking.created_at|date:"d F Y" }}</span>
+						</li>
+
+						<li class="booking_details_item">
+							<i class="fas fa-user"></i>
+							<span class="details_text">USER</span>
+							<span class="details_value">{{ booking.user.username }}</span>
+						</li>
+
+						<li class="booking_details_item">
+							<i class="fas fa-users"></i>
+							<span class="details_text">PARTICIPANTS</span>
+							<span class="details_value">{{ booking.num_of_people }}</span>
+						</li>
+
+						<li class="booking_details_item">
+							<i class="fas fa-dollar-sign"></i>
+							<span class="details_text">TOTAL PRICE</span>
+							<span class="details_value">$ {{ booking.price|floatformat }}</span>
+						</li>
+					</ul>
+				</div>
+
+				<div class="booking_btn_container">
+					<form method="POST">
+						{% csrf_token %}
+						<button class="booking_btn_booking booking_btn_margin booking_form_btn">
+							CONFIRM CANCELLATION
+						</button>
+					</form>
+					<a href="{% url 'booking' booking.id %}" class="booking_btn_booking">CANCEL CANCELLATION</a>
+				</div>
+			</section>
+		</div>
+	</div>
+{% endblock %}

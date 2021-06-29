@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Create a Booking | Trips {% endblock %}
+
+{% block css_files %}
+	<link rel="stylesheet" href="{% static 'bookings/css/bookings_nav.css' %}">
+	<link rel="stylesheet" href="{% static 'bookings/css/new_booking.css' %}">
+	<script src="{% static 'bookings/js/new_booking.js' %}" defer></script>
+{% endblock %}
+
+{% block content %}
+	<div class="inner_container">
+		<header>
+			{% include 'includes/navigation.html' %}
+		</header>
+		
+		<div class="content_container">
+			{% if messages %}
+				<ul class="alert_messages">
+					{% for message in messages %}
+						<li class="alert_message alert_{{ message.tags }}">
+							{{ message }}
+							<button class="alert_btn_close">
+								<i class="fas fa-times"></i>
+							</button>
+						</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+
+			<section class="new_booking_section">
+				<h1>CREATE A BOOKING</h1>
+				
+				<div class="new_booking_content_container">
+					<div class="form_container">
+						<h4>{{ tour.name|upper }}</h4>
+
+						<div class="new_booking_detail_container">
+							<div class="new_booking_detail_item">
+								<i class="fas fa-suitcase"></i>
+								<span class="detail_text">SPOTS LEFT</span>
+								<span class="detail_value">{{ tour.num_of_spots_left }}</span>
+							</div>
+
+							<div class="new_booking_detail_item">
+								<i class="fas fa-user-alt"></i>
+								<span class="detail_text">USER</span>
+								<span class="detail_value">{{ user.username }}</span>
+							</div>
+
+							<div class="new_booking_detail_item">
+								<i class="fas fa-users"></i>
+								<span class="detail_text">NO. OF PPL</span>
+								<div class="new_booking_ppl_container">
+									<button class="btn_ppl btn_minus">
+										<i class="fas fa-minus"></i>
+									</button>
+									<span class="detail_value detail_ppl">{{ ppl }}</span>
+									<button class="btn_ppl btn_plus">
+										<i class="fas fa-plus"></i>
+									</button>
+								</div>
+							</div>
+
+							<div class="new_booking_detail_item">
+								<i class="fas fa-dollar-sign"></i>
+								<span class="detail_text">PRICE</span>
+								<span class="detail_value detail_price">$ {{ tour.price|floatformat }}</span>
+							</div>
+
+							<input type="hidden" name="price" value="{{ tour.price }}" class="input_price">
+
+							<form method="POST" class="new_booking_btn_container">
+								{% csrf_token %}
+								<input type="hidden" name="ppl" id="input_ppl" value="{{ ppl }}">
+								<input type="hidden" name="max_ppl" id="input_max_ppl" value="{{ tour.num_of_spots_left }}">
+								<button class="btn_submit">BOOK</button>
+								<a href="{% url 'tour' tour.slug %}" class="btn_cancel">
+									CANCEL
+								</a>
+							</form>
+						</div>
+					</div>
+
+					<div class="new_booking_img_container">
+						<img src="{% static 'bookings/images/new_booking.jpg' %}" alt="map">
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+{% endblock %}

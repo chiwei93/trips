@@ -1,0 +1,46 @@
+<nav class="nav">
+  <a href="{% url 'home' %}" class="nav_logo">Trips</a>
+
+  <button class="nav_btn_toggle">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <ul class="nav_list">
+    {% if current_page != "tours" %}
+      <li class="nav_item">
+        <a href="{% url 'tours' %}" class="nav_link">Tours</a>
+      </li>
+    {% endif %}
+    {% if user.is_authenticated and current_page != "bookings" %}
+      <li class="nav_item">
+        <a href="{% url 'bookings' %}" class="nav_link">Bookings</a>
+      </li>
+    {% endif %}
+    {% if current_page != "about_us" %}
+      <li class="nav_item">
+        <a href="{% url 'about_us' %}" class="nav_link">About Us</a>
+      </li>
+    {% endif %}
+    {% if current_page != "contacts" %}
+      <li class="nav_item">
+        <a href="{% url 'contacts' %}" class="nav_link">Contacts</a>
+      </li>
+    {% endif %}
+    {% if user.is_authenticated %}
+      <li class="nav_item">
+        <a href="{% url 'logout' %}" class="nav_link">Log Out</a>
+      </li>
+    {% else %}
+      {% if current_page != "login" %}
+        <li class="nav_item">
+          <a href="{% url 'login' %}" class="nav_link">Login</a>
+        </li>
+      {% endif %}
+      {% if current_page != "register" %}
+        <li class="nav_item">
+          <a href="{% url 'register' %}" class="nav_link">Sign Up</a>
+        </li>
+      {% endif %}
+    {% endif %}
+  </ul>
+</nav>

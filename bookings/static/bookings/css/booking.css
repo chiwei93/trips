@@ -1,0 +1,145 @@
+.booking_section {
+  margin: 1em 0 8em;
+}
+
+.booking_header {
+  display: flex;
+  align-items: center;
+}
+
+.booking_header_img_container {
+  flex: 0.3;
+  margin-right: 1em;
+}
+
+.booking_header_img_container img {
+  width: 100%;
+}
+
+.booking_header h1 {
+  flex: 0.7;
+}
+
+.booking_details_container {
+  margin-top: 2em;
+}
+
+.booking_details_container h3 {
+  background-image: linear-gradient(
+    to right bottom,
+    var(--color-secondary),
+    var(--color-primary)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.booking_details_list {
+  margin-top: 2em;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5em;
+}
+
+.booking_details_item {
+  display: grid;
+  grid-template-columns: 0.1fr 0.4fr 0.5fr;
+  align-content: center;
+  gap: 0.5em;
+}
+
+.booking_details_item i {
+  color: var(--color-primary);
+}
+
+.details_text,
+.details_value {
+  font-size: 0.9rem;
+}
+
+.details_text {
+  font-weight: bold;
+}
+
+.details_value {
+  color: var(--color-gray);
+  justify-self: end;
+}
+
+.booking_btn_container {
+  margin-top: 3em;
+  display: flex;
+  flex-direction: column;
+}
+
+.booking_btn_container form {
+  position: relative;
+  display: flex;
+}
+
+.booking_btn_booking.booking_form_btn {
+  width: 100%;
+}
+
+.booking_btn_booking {
+  all: unset;
+  cursor: pointer;
+  display: inline-block;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  padding: 0.5em 1em;
+  border-radius: 0.5em;
+  font-weight: bold;
+  transition: color 0.3s, background-color 0.3s;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+.booking_btn_booking:hover,
+.booking_btn_booking:active {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+}
+
+.booking_btn_margin {
+  margin-bottom: 1.5em;
+}
+
+@media only screen and (min-width: 600px) {
+  .booking_header h1 {
+    font-size: 2rem;
+  }
+
+  .booking_details_container h3 {
+    font-size: 1.5rem;
+  }
+
+  .booking_btn_container {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .booking_btn_margin {
+    margin-bottom: 0;
+    margin-right: 2em;
+  }
+
+  .booking_img_container {
+    margin: 10em 0;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .booking_details_list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5em;
+  }
+}
+
+@media only screen and (min-wdith: 900px) {
+  .details_text,
+  .details_value {
+    font-size: 1rem;
+  }
+}

@@ -1,0 +1,159 @@
+.new_review_section {
+  margin: 1em 0 4em;
+}
+
+.new_review_section h1 {
+  color: transparent;
+  background-image: linear-gradient(
+    to right,
+    var(--color-secondary),
+    var(--color-primary)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  margin-bottom: 2em;
+  text-align: center;
+}
+
+.new_review_form {
+  padding: 2em;
+  box-shadow: 0.2em 0.2em 0.8em rgba(0, 0, 0, 0.15);
+  border-radius: 0.5em;
+  position: relative;
+}
+
+.new_review_form h4 {
+  margin-bottom: 2em;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.review_form_control {
+  margin-bottom: 2em;
+}
+
+.review_form_control textarea {
+  padding: 0.5em;
+  width: 100%;
+  color: var(--color-primary);
+  outline: none;
+  border: 1px solid var(--color-gray);
+  resize: none;
+  border-radius: 0.5em;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.review_form_control textarea::placeholder {
+  color: var(--color-gray);
+  transition: color 0.3s;
+}
+
+.review_form_control textarea:focus {
+  border-color: var(--color-primary);
+}
+
+.review_form_control textarea:focus::placeholder {
+  color: var(--color-primary);
+}
+
+.review_form_control.error textarea {
+  border-color: var(--color-error);
+}
+
+.review_form_control.error textarea,
+.review_form_control.error textarea::placeholder {
+  color: var(--color-error);
+}
+
+.radio_btn_list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+  gap: 1em;
+}
+
+.radio_btn_container input {
+  position: absolute;
+  opacity: 0;
+  z-index: -1000;
+}
+
+.radio_btn_label {
+  border: 1px solid var(--color-gray);
+  display: inline-block;
+  padding: 1em;
+  color: var(--color-gray);
+  border-radius: 0.5em;
+  cursor: pointer;
+  transition: border-color 0.3s, color 0.3s;
+}
+
+.radio_btn_label:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.radio_btn_label.active {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.radio_btn_label i {
+  margin-left: 0.5em;
+}
+
+.form_btn_container {
+  margin-top: 2em;
+  text-align: center;
+}
+
+.form_btn_container button {
+  all: unset;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  border: 1px solid var(--color-primary);
+  padding: 0.5em 1em;
+  color: var(--color-primary);
+  border-radius: 0.5em;
+  cursor: pointer;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.form_btn_container button:hover,
+.form_btn_container button:active {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+}
+
+.errorlist {
+  margin-top: 1em;
+}
+
+.errorlist li {
+  color: var(--color-error);
+  font-size: 0.9rem;
+}
+
+.errorlist li:not(:last-child) {
+  margin-bottom: 0.5em;
+}
+
+@media only screen and (min-width: 600px) {
+  .new_review_form {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .new_review_form {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .new_review_form {
+    width: 60%;
+  }
+}

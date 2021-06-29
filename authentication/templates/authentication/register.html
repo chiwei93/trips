@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Sign Up | Trips {% endblock %}
+
+{% block css_files %}
+	<link rel="stylesheet" href="{% static 'authentication/css/register.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="inner_container">
+		<header id='header'>
+			{% include 'includes/navigation.html' %}
+		</header>
+		
+		<div class="content_container">
+			{% if messages %}
+				<ul class="alert_messages">
+					{% for message in messages %}
+						<li class="alert_message alert_{{ message.tags }}">
+							{{ message }}
+							<button class="alert_btn_close">
+								<i class="fas fa-times"></i>
+							</button>
+						</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+			
+			<section class="form_section">
+				<div class="form_left">
+					<h2>Sign Up</h2>
+
+					<p class="form_left_header">Welcome to Trips!</p>
+
+					<img src="{% static 'authentication/images/signup.png' %}" alt="Sign Up">
+
+					<p class="form_left_text">
+						Already have an account?
+						<a href="{% url "login" %}">Log In Here</a>
+					</p>
+				</div>
+
+				<form method="POST" class="form_right">
+					<h2>Sign Up:</h2>
+
+					{% csrf_token %}
+
+					{% for field in form %}
+						<div class="form_control {% if field.errors %}error{% endif %}">
+							{{ field }}
+							{{ field.errors }}
+						</div>
+					{% endfor %}
+
+					<p class="form_right_text">
+						Already have an account?
+						<a href="{% url "login" %}">Login Here</a> 
+					</p>
+
+					<div class="form_btn_container">
+						<button class="form_btn_submit">Register</button>
+					</div>
+				</form>
+			</section>
+		</div>
+	</div>
+{% endblock %}

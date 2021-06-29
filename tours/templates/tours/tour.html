@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Tours | Trips {% endblock %}
+
+{% block css_files %}
+	<link rel="stylesheet" href="{% static 'tours/css/tour.css' %}">
+	<script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+	<link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+	<script src="{% static 'tours/js/mapbox.js' %}" defer></script>
+{% endblock %}
+
+{% block content %}
+	<div class="inner_container">
+		<header id="header">
+			{% include 'includes/navigation.html' %}
+			
+			<div class="tour_header_img_container">
+				<img src="{% static images.0.image_path %}" alt="hero">
+			</div>
+
+			<h1>{{ tour.name|upper }}</h1>
+		</header>
+
+		<div class="content_container">
+			{% if messages %}
+				<ul class="alert_messages">
+					{% for message in messages %}
+						<li class="alert_message alert_{{ message.tags }}">
+							{{ message }}
+							<button class="alert_btn_close">
+								<i class="fas fa-times"></i>
+							</button>
+						</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+		</div>
+		
+		<div class="content_container">
+			<section class="tour_summary">
+				Revel in the riches of Rome and Florence, see the beauty fo the Italian Lakes and mingle with the fashionable crowd on sun-kissed Capri.
+
+				<p class="tour_locations">
+					<p class="tour_title">LOCATIONS:</p>
+					<span class="locations_text">{{ locations_names|join:", "}}</span>
+				</p>
+			</section>
+		</div>
+
+		<div class="content_container">
+			<section class="tour_description">
+				<ul class="tour_facts_list">
+					<p class="tour_title mar-bottom-2">QUICK FACTS</p>
+					<li class="tour_facts_item">
+						<i class="far fa-calendar-alt"></i>
+						<p class="facts_item_text">START DATE</p>
+						<p class="facts_item_value">{{ tour.start_date|date:"d F Y"}}</p>
+					</li>
+
+					<li class="tour_facts_item">
+						<i class="far fa-calendar-alt"></i>
+						<p class="facts_item_text">END DATE</p>
+						<p class="facts_item_value">{{ tour.end_date|date:"d F Y"}}</p>
+					</li>
+
+					<li class="tour_facts_item">
+						<i class="far fa-clock"></i>
+						<p class="facts_item_text">DURATION</p>
+						<p class="facts_item_value">{{ tour.duration }}</p>
+					</li>
+
+					<li class="tour_facts_item">
+						<i class="fas fa-users"></i>
+						<p class="facts_item_text">GROUP SIZE</p>
+						<p class="facts_item_value">{{ tour.max_group_size }}</p>
+					</li>
+
+					<li class="tour_facts_item">
+						<i class="far fa-star"></i>
+						<p class="facts_item_text">RATING</p>
+						<p class="facts_item_value">{{ tour.ratings|floatformat }} / 5 ({{ tour.ratings_number }})</p>
+					</li>
+
+					<li class="tour_facts_item">
+						<i class="fas fa-dollar-sign"></i>
+						<p class="facts_item_text">PRICE</p>
+						<p class="facts_item_value">$ {{ tour.price|floatformat }}</p>
+					</li>
+				</ul>
+
+				<div class="tour_overview">
+					<h3 class="tour_title mar-bottom-2 font_md">ABOUT {{ tour.name|upper }}</h3>
+
+					<div class="tour_overview_text">
+						{{ tour.description|linebreaksbr }}
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<div class="content_container">
+			<section class="tour_imgs_container">
+				{% for img in images %}
+					<img src="{% static img.image_path %}" alt="location">
+				{% endfor %}
+			</section>
+		</div>
+		
+		<div class="content_container">
+			<div id='map'></div>
+		</div>
+
+		<section class="tour_reviews_section">
+			{% if reviews|length > 2 %}
+				<div class="tour_reviews_link_container">
+					<a href="{% url 'reviews' tour.slug %}" class="tour_reviews_btn_see_all">See All Reviews</a>
+				</div>
+			{% endif %}
+
+			<div class="tour_reviews_cards_container">
+				{% if reviews.0 %}
+					<div class="tour_review_card">
+						<p class="tour_review_card_user_name">
+							{{ reviews.0.user.username }}
+						</p>
+
+						<p class="tour_review_card_review">
+							{{ reviews.0.review }}
+						</p>
+						
+						<ul class="tour_review_card_rating_list">
+							{% for num in numbers %}
+								{% if reviews.0.rating >= num%}
+									<li class="tour_review_card_rating_item">
+										<i class="fas fa-star"></i>
+									</li>
+								{% else %}
+									<li class="tour_review_card_rating_item">
+										<i class="far fa-star"></i>
+									</li>
+								{% endif %}
+							{% endfor %}
+						</ul>
+					</div>
+				{% endif %}
+
+				{% if reviews.1 %}
+					<div class="tour_review_card">
+						<p class="tour_review_card_user_name">
+							{{ reviews.1.user.username }}
+						</p>
+
+						<p class="tour_review_card_review">
+							{{ reviews.1.review }}
+						</p>
+
+						<ul class="tour_review_card_rating_list">
+							{% for num in numbers %}
+								{% if reviews.1.rating >= num%}
+									<li class="tour_review_card_rating_item">
+										<i class="fas fa-star"></i>
+									</li>
+								{% else %}
+									<li class="tour_review_card_rating_item">
+										<i class="far fa-star"></i>
+									</li>
+								{% endif %}
+							{% endfor %}
+						</ul>
+					</div>
+				{% endif %}
+
+				{% if reviews|length_is:"0" %}
+					<div class="tour_review_card">
+						No reviews written for this tour yet.
+					</div>
+				{% endif %}
+			</div>
+		</section>
+		
+		<div class="content_container">
+			<section class="tour_book_section">
+				<ul class="tour_book_img_container">
+					{% for img in images %}
+						<li class="tour_book_img_item">
+							<img src="{% static img.image_path %}" alt="location">
+						</li>
+					{% endfor %}
+				</ul>
+
+				<div class="tour_book_text">
+					<p class="tour_title tour_book_font">INTERESTED IN THE TOUR?</p>
+
+					{% if tour.num_of_spots_left > 0 %}
+						<a href="{% if user.is_authenticated %}{% url 'new_booking' tour.slug %}{% else %}{% url 'login' %}{% endif %}" class="tour_book_btn">
+							{% if user.is_authenticated %}
+								BOOK NOW
+							{% else %}	
+								LOG IN TO BOOK NOW
+							{% endif %}
+						</a>
+					{% else %}
+						<p class="tour_full">FULLY BOOKED</p>
+					{% endif %}
+				</div>
+			</section>
+		</div>	
+	</div>
+{% endblock %}
+
+{% block js_files %}
+	{{ locations_coords|json_script:"mapbox_coords" }}
+{% endblock %}

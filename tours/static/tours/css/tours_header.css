@@ -1,0 +1,14 @@
+.nav_logo:hover,
+.nav_logo:active,
+.nav_btn_toggle:hover,
+.nav_btn_toggle:active,
+.nav_btn_toggle.active {
+  color: var(--color-secondary);
+}
+
+@media only screen and (min-width: 800px) {
+  .nav_link:hover,
+  .nav_link:active {
+    color: var(--color-secondary);
+  }
+}

@@ -1,0 +1,99 @@
+.confirm_section {
+  margin: 2em 0 4em;
+}
+
+.confirm_content_container {
+  padding: 2em;
+  box-shadow: 0.2em 0.2em 0.8em rgba(0, 0, 0, 0.15);
+  border-radius: 1em;
+}
+
+.confirm_content_container h1 {
+  background-image: linear-gradient(
+    to right,
+    var(--color-secondary),
+    var(--color-primary)
+  );
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  margin-bottom: 1.5em;
+}
+
+.confirm_list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1em;
+}
+
+.confirm_facts_item {
+  display: grid;
+  grid-template-columns: 0.1fr 0.4fr 0.5fr;
+  gap: 0.5em;
+  align-content: center;
+}
+
+.confirm_facts_item i {
+  color: var(--color-primary);
+}
+
+.fact_name {
+  font-weight: bold;
+}
+
+.fact_value {
+  justify-self: end;
+  color: var(--color-gray);
+}
+
+.confirm_btn_container {
+  margin-top: 2em;
+  text-align: center;
+}
+
+.confirm_btn {
+  all: unset;
+  display: inline-block;
+  padding: 0.5em 1em;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  cursor: pointer;
+  border-radius: 0.5em;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  transition: color 0.3s, background-color 0.3s;
+  font-size: 0.9rem;
+}
+
+.mar-left {
+  margin-left: 1em;
+}
+
+.confirm_btn:active,
+.confirm_btn:hover {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+}
+
+@media only screen and (min-width: 600px) {
+  .confirm_content_container {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .confirm_content_container h1 {
+    font-size: 2rem;
+  }
+
+  .confirm_btn {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .confirm_content_container {
+    width: 60%;
+  }
+}

@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Confirm Booking | Trips {% endblock %}
+
+{% block css_files %}
+	<link rel="stylesheet" href="{% static 'bookings/css/bookings_nav.css' %}">
+	<link rel="stylesheet" href="{% static 'bookings/css/confirm_booking.css' %}">
+	<script src="https://js.stripe.com/v3/"></script>
+{% endblock %}
+
+{% block content %}
+	<div class="inner_container">
+		<header>
+			{% include 'includes/navigation.html' %}
+		</header>
+		
+		<div class="content_container">
+			{% if messages %}
+				<ul class="alert_messages">
+					{% for message in messages %}
+						<li class="alert_message alert_{{ message.tags }}">
+							{{ message }}
+							<button class="alert_btn_close">
+								<i class="fas fa-times"></i>
+							</button>
+						</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+
+			<section class="confirm_section">
+				<div class="confirm_content_container">
+					<h1>CONFIRM BOOKING</h1>
+
+					<div class="confirm_list">
+						<div class="confirm_facts_item">
+							<i class="fas fa-suitcase"></i>
+							<span class="fact_name">TOUR</span>
+							<span class="fact_value">{{ tour.name }}</span>
+						</div>
+
+						<div class="confirm_facts_item">
+							<i class="fas fa-user"></i>
+							<span class="fact_name">USER</span>
+							<span class="fact_value">{{ user.username }}</span>
+						</div>
+
+						<div class="confirm_facts_item">
+							<i class="fas fa-users"></i>
+							<span class="fact_name">PEOPLE</span>
+							<span class="fact_value">{{ participants }}</span>
+						</div>
+
+						<div class="confirm_facts_item">
+							<i class="fas fa-dollar-sign"></i>
+							<span class="fact_name">TOTAL PRICE</span>
+							<span class="fact_value">${{ price|floatformat }}</span>
+						</div>
+					</div>
+
+					<div class="confirm_btn_container">
+						<button class="confirm_btn" id="checkout-button">
+							CONFIRM
+						</button>
+						<a href="{% url 'new_booking' tour.slug %}" class="confirm_btn mar-left">CANCEL</a>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+{% endblock %}
+
+{% block js_files %}
+	<script>
+		const stripe = Stripe("pk_test_51IpEStCi28pGVngNcVa7H809QpAMnc3WQ8z88mIZVjJm44a32jN1gwzEcYxoM7pYwAYaAtluTCKl4NkbToHhFaeX00st5FKyVN");
+
+    	const checkoutButton = document.getElementById("checkout-button");
+
+		checkoutButton.addEventListener("click", () => {
+			stripe.redirectToCheckout({ sessionId: "{{checkout_session_id}}" });
+		})
+
+	</script>
+{% endblock %}

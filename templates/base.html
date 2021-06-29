@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://kit.fontawesome.com/6c6f5ee96d.js" crossorigin="anonymous"></script>
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	<script src="{% static 'js/script.js' %}" defer></script>
+	{% block css_files %} {% endblock %}
+</head>
+<body>
+	<div class="outer_container">
+		{% block content %}
+		{% endblock %}
+
+		<footer id="footer">
+			<ul class="footer_list">
+				<li class="footer_item">
+					<a href="{% url 'about_us' %}" class="footer_link {% if current_page == "about_us" %}active{% endif %}">About Us</a>
+				</li>
+				<li class="footer_item">
+					<a href="{% url 'privacy' %}" class="footer_link {% if current_page == "privacy" %}active{% endif %}">Privacy</a>
+				</li>
+				<li class="footer_item">
+					<a href="{% url 'terms' %}" class="footer_link {% if current_page == "terms" %}active{% endif %}">Terms of Use</a>
+				</li>
+			</ul>
+
+			<p class="footer_copyright">
+				&copy; <span>Copyright 2021 Trips</span>
+			</p>
+		</footer>
+	</div>
+
+	{% block js_files %}
+	{% endblock %}
+</body>
+</html>

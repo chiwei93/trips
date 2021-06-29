@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Contact Us | Trips {% endblock %}
+
+{% block css_files %}
+	<link rel="stylesheet" href="{% static 'information/css/information.css' %}">
+	<link rel="stylesheet" href="{% static 'information/css/contacts.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="inner_container">
+		<header>
+			{% include 'includes/navigation.html' %}
+		</header>
+		
+		<div class="content_container">
+			<h1 class="contacts_heading">Contact Us</h1>
+
+			<div class="contacts_content_container">
+				<div class="contacts_img_container">
+					<img src="{% static "information/images/rome.jpg" %}" alt="Rome">
+				</div>
+
+				<div class="contacts_info_container">
+					<div class="contacts_info_text">
+						We want you to have a travel experience that you’ll remember for its many pleasures, not hassles. So, please feel free to contact Trips with the contact information below as you plan your trip – before you book – with any questions or concerns you may have about our tours and services. We will provide all the information you need to choose the perfect, most enjoyable tour for you, your friends, or family members. 
+					</div>
+
+					<h3>Contact Information</h3>
+
+					<ul class="contacts_list">
+						<li class="contacts_item">
+							<i class="fas fa-phone-alt contacts_icon"></i>
+							+60-123456789
+						</li>
+
+						<li class="contacts_item">
+							<i class="fas fa-envelope contacts_icon"></i>
+							trips@email.com
+						</li>
+
+						<li class="contacts_item">
+							<i class="fas fa-map-marker-alt contacts_icon"></i>
+							102 Street, 47810, Selangor
+						</li>
+
+						<li class="contacts_item">
+							<i class="far fa-clock contacts_icon"></i>
+							Everyday: 09.00 - 17.30
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

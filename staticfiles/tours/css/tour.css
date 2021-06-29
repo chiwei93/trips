@@ -1,0 +1,448 @@
+#header {
+  height: 75vw;
+  position: relative;
+}
+
+.tour_header_img_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -5;
+  display: flex;
+  background: var(--color-purple-light);
+  background-image: linear-gradient(
+    to bottom,
+    var(--color-purple-light),
+    var(--color-secondary)
+  );
+}
+
+.tour_header_img_container img {
+  width: 100vw;
+  opacity: 0.25;
+}
+
+#header h1 {
+  color: var(--color-white);
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.tour_summary {
+  font-size: 0.9rem;
+  color: var(--color-gray);
+  line-height: 1.5;
+}
+
+.tour_locations {
+  margin-top: 2em;
+}
+
+.tour_title {
+  font-size: 1rem;
+  font-weight: bold;
+  background-image: linear-gradient(
+    to right,
+    var(--color-secondary),
+    var(--color-primary)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.locations_text {
+  display: block;
+  margin-top: 0.5em;
+  font-size: 0.9rem;
+  font-weight: normal;
+}
+
+.tour_description {
+  margin-top: 3em;
+}
+
+.mar-bottom-2 {
+  margin-bottom: 2em;
+}
+
+.tour_facts_item {
+  display: grid;
+  grid-template-columns: 0.1fr 0.35fr 0.55fr;
+  align-content: center;
+}
+
+.tour_facts_item:not(:last-child) {
+  margin-bottom: 1.5em;
+}
+
+.tour_facts_item i {
+  color: var(--color-primary);
+}
+
+.facts_item_text {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.facts_item_value {
+  color: var(--color-gray);
+  font-size: 0.9rem;
+}
+
+.tour_overview {
+  margin-top: 4em;
+}
+
+.font_md {
+  font-size: 1.5rem;
+}
+
+.tour_overview_text {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--color-gray);
+}
+
+.tour_imgs_container {
+  position: relative;
+  margin: 8em 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2em;
+}
+
+.tour_imgs_container img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5em;
+}
+
+.tour_imgs_container::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -1.5em;
+  right: -1.5em;
+  bottom: -10%;
+  background-color: var(--color-purple-light);
+  z-index: -10;
+}
+
+#map {
+  width: 100%;
+  height: 500px;
+  margin: 5em 0 4em;
+}
+
+.tour_reviews_section {
+  margin: 10em 0;
+  background-color: var(--color-purple-light);
+  padding: 4em 1.5em;
+  position: relative;
+}
+
+.tour_reviews_section::before,
+.tour_reviews_section::after {
+  content: '';
+  position: absolute;
+  background-color: var(--color-purple-light);
+  height: 4rem;
+  left: 0;
+  right: 0;
+}
+
+.tour_reviews_section::before {
+  clip-path: polygon(0 0, 0 100%, 100% 100%);
+  bottom: 100%;
+}
+
+.tour_reviews_section::after {
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  top: 100%;
+}
+
+.tour_reviews_link_container {
+  text-align: right;
+  margin-bottom: 1.5em;
+}
+
+.tour_reviews_btn_see_all {
+  font-size: 0.9rem;
+  color: var(--color-primary);
+  transition: color 0.3s;
+}
+
+.tour_reviews_btn_see_all:hover,
+.tour_reviews_btn_see_all:active {
+  color: var(--color-black);
+}
+
+.tour_reviews_cards_container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2em;
+}
+
+.tour_review_card {
+  padding: 2em;
+  box-shadow: 0.2em 0.2em 0.8em rgba(0, 0, 0, 0.15);
+  background-color: var(--color-white);
+}
+
+.tour_review_card_user_name {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 1.5em;
+}
+
+.tour_review_card_review {
+  font-size: 0.8rem;
+  color: var(--color-gray);
+  line-height: 1.7;
+}
+
+.tour_review_card_rating_list {
+  display: flex;
+  align-items: center;
+  margin-top: 1.5em;
+  justify-content: center;
+}
+
+.tour_review_card_rating_item:not(:last-child) {
+  margin-right: 0.1em;
+}
+
+.tour_review_card_rating_item i {
+  font-size: 0.9rem;
+  color: var(--color-primary);
+}
+
+.tour_book_section {
+  padding: 2em;
+  border-radius: 1em;
+  box-shadow: 0.2em 0.2em 0.8em rgba(0, 0, 0, 0.15);
+  margin-bottom: 4em;
+}
+
+.tour_book_img_container {
+  display: none;
+}
+
+.tour_book_text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tour_book_font {
+  font-size: 1.2rem;
+}
+
+.tour_book_btn {
+  margin-top: 1em;
+  display: inline-block;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  border-radius: 0.5em;
+  padding: 0.5em 1em;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: color 0.3s, background-color 0.3s;
+}
+
+.tour_book_btn:hover,
+.tour_book_btn:active {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+}
+
+.tour_full {
+  color: var(--color-primary);
+  margin-top: 1em;
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 600px) {
+  .tour_book_section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .tour_book_img_container {
+    position: relative;
+    display: block;
+  }
+
+  .tour_book_img_container img {
+    width: 6em;
+    height: 6em;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .tour_book_img_item:nth-child(2) {
+    position: absolute;
+    top: 0;
+    left: 25%;
+    z-index: -10;
+  }
+
+  .tour_book_img_item:last-child {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    z-index: -20;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  #header h1 {
+    font-size: 4rem;
+  }
+
+  .tour_summary,
+  .locations_text,
+  .facts_item_text,
+  .facts_item_value,
+  .tour_overview_text,
+  .tour_book_btn {
+    font-size: 1rem;
+  }
+
+  .tour_title {
+    font-size: 1.3rem;
+  }
+
+  .tour_facts_item i {
+    font-size: 1.2rem;
+  }
+
+  .font_md {
+    font-size: 2rem;
+  }
+
+  .tour_reviews_section {
+    padding: 4em;
+  }
+
+  .tour_reviews_btn_see_all {
+    font-size: 1rem;
+  }
+
+  .tour_reviews_cards_container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tour_imgs_container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .tour_imgs_container::before {
+    top: -30%;
+    bottom: -30%;
+    left: -4em;
+    right: -4em;
+  }
+
+  .tour_full {
+    font-size: 1.2rem;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .tour_description {
+    display: flex;
+    align-items: center;
+    margin-top: 5em;
+  }
+
+  .tour_facts_list {
+    flex: 0.5;
+  }
+
+  .tour_overview {
+    margin-top: 0;
+    flex: 0.5;
+    margin-left: 2em;
+  }
+
+  .tour_book_section {
+    width: 75%;
+    margin: 0 auto 4em;
+  }
+
+  .tour_review_card_user_name {
+    font-size: 1.2rem;
+  }
+
+  .tour_review_card_review {
+    font-size: 1rem;
+  }
+
+  .tour_review_card_rating_item i {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .tour_imgs_container::before {
+    left: -5em;
+    right: -5em;
+  }
+
+  .tour_reviews_section {
+    padding: 4em 5em;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  #header h1 {
+    font-size: 6rem;
+  }
+
+  .tour_summary,
+  .locations_text,
+  .facts_item_text,
+  .facts_item_value,
+  .tour_overview_text {
+    font-size: 1.2rem;
+  }
+
+  .tour_title {
+    font-size: 1.5rem;
+  }
+
+  .tour_facts_item i {
+    font-size: 1.4rem;
+  }
+
+  .font_md {
+    font-size: 2.5rem;
+  }
+
+  .tour_imgs_container::before {
+    left: -15vw;
+    right: -15vw;
+  }
+
+  .tour_reviews_section {
+    padding: 4em 15vw;
+  }
+}
+
+@media only screen and (min-width: 2000px) {
+  .tour_imgs_container::before {
+    left: -25vw;
+    right: -25vw;
+  }
+
+  .tour_reviews_section {
+    padding: 4em 25vw;
+  }
+}

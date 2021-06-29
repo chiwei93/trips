@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Reviews | Trips {% endblock %}
+
+{% block css_files %}
+	<link rel="stylesheet" href="{% static 'bookings/css/bookings_nav.css' %}">
+	<link rel="stylesheet" href="{% static 'reviews/css/reviews.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="inner_container">
+		<header>
+			{% include 'includes/navigation.html' %}
+		</header>
+		
+		<div class="content_container">
+			<section class="reviews_section">
+				<h1>REVIEWS:</h1>
+
+				<div class="reviews_btn_container">
+					<a href="{% url 'tour' tour.slug %}" class="btn_back">BACK</a>
+				</div>
+
+				<div class="reviews_cards_container">
+					{% for review in reviews %}
+						<div class="reviews_card">
+							<p class="card_username">
+								{{ review.user.username }}
+							</p>
+
+							<p class="card_review">
+								{{ review.review }}
+							</p>
+
+							<ul class="card_rating_list">
+								{% for num in numbers %}
+									{% if review.rating >= num%}
+										<li class="rating_item">
+											<i class="fas fa-star"></i>
+										</li>
+									{% else %}
+										<li class="rating_item">
+											<i class="far fa-star"></i>
+										</li>
+									{% endif %}
+								{% endfor %}
+							</ul>
+						</div>
+					{% endfor %}
+				</div>
+			</section>
+		</div>
+	</div>
+{% endblock %}

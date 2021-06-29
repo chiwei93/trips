@@ -1,0 +1,129 @@
+.about_heading {
+  text-align: center;
+  margin: 1em 0;
+  color: var(--color-primary);
+}
+
+.about_header_img_container {
+  position: relative;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-bottom: 4em;
+  line-height: 1.5;
+}
+
+.about_header_img_container img {
+  width: 100%;
+  margin-bottom: 1.5em;
+}
+
+.about_header_img_container h4 {
+  font-size: 1.5rem;
+  margin-bottom: 1em;
+}
+
+.about_header_img_container p {
+  color: var(--color-gray);
+}
+
+.about_content_container,
+.about_content_container_reverse {
+  position: relative;
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.about_content_container_reverse {
+  margin: 6em 0;
+}
+
+.about_content_container_reverse::before {
+  content: '';
+  position: absolute;
+  left: -1.5em;
+  right: -1.5em;
+  top: -15%;
+  bottom: -15%;
+  background-color: rgb(246, 240, 253);
+  z-index: -10;
+}
+
+.about_content_container img,
+.about_content_container_reverse img {
+  width: 100%;
+  margin-bottom: 1.5em;
+}
+
+.about_content_container p,
+.about_content_container_reverse p {
+  margin-bottom: 1em;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.about_gray {
+  color: var(--color-gray);
+}
+
+@media only screen and (min-width: 700px) {
+  .about_content_container,
+  .about_content_container_reverse {
+    display: flex;
+    align-items: center;
+    text-align: left;
+  }
+
+  .about_content_container_reverse {
+    flex-direction: row-reverse;
+  }
+
+  .about_content_img_container {
+    flex: 0.5;
+    margin-right: 3em;
+  }
+
+  .about_content_container_reverse .about_content_img_container {
+    margin-right: 0;
+    margin-left: 3em;
+  }
+
+  .about_content_container_content {
+    flex: 0.5;
+  }
+
+  .about_content_container_reverse::before {
+    left: -4em;
+    right: -4em;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .about_header_img_container {
+    font-size: 1rem;
+  }
+
+  .about_content_container p {
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .about_content_container_reverse::before {
+    left: -5em;
+    right: -5em;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .about_content_container_reverse::before {
+    left: -15vw;
+    right: -15vw;
+  }
+}
+
+@media only screen and (min-width: 2000px) {
+  .about_content_container_reverse::before {
+    left: -25vw;
+    right: -25vw;
+  }
+}

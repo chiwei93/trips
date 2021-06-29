@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Tours | Trips {% endblock %}
+
+{% block css_files %}
+	<link rel="stylesheet" href="{% static 'tours/css/tours_header.css' %}">
+	<link rel="stylesheet" href="{% static 'tours/css/tours.css' %}">
+{% endblock %}
+
+{% block content %}
+	<div class="inner_container">
+		<header>
+			{% include 'includes/navigation.html' %}
+		</header>
+		
+		<div class="content_container">
+			<div class="tours_cards_container">
+				{% for tour in tours %}
+					<div class="tour_card_container">
+						<h3>{{ tour.0.name }}</h3>
+
+						<p class="tour_date">
+							<span class="tour_start_date">{{ tour.0.start_date|date:"d F Y" }}</span> - <span class="tour_end_date">{{ tour.0.end_date|date:"d F Y"}}</span>
+						</p>
+
+						<ul class="tour_icons_list">
+							<li class="tour_icons_item">
+								<i class="far fa-star"></i>
+								{{ tour.0.ratings|floatformat }} ({{ tour.0.ratings_number }})
+							</li>
+							<li class="tour_icons_item">
+								<i class="fas fa-user-alt"></i>
+								{{ tour.0.max_group_size }} Max
+							</li>
+						</ul>
+
+						<p class="tour_summary">
+							{{ tour.0.summary }}
+						</p>
+
+						<img src="{% static tour.1.image_path %}" alt="{{ tour.0.name }}">
+
+						<div class="tour_card_btn_container">
+							<div class="tour_price_container">
+								<p class="tour_price_text">Total Price:</p>
+								<p class="tour_price">$ {{ tour.0.price|floatformat }}</p>
+							</div>
+
+							<a href="{% url 'tour' tour.0.slug  %}" class="tour_link">Details</a>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}
