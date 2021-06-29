@@ -31,8 +31,6 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env("IS_DEVELOPMENT", default=True)
 
 ALLOWED_HOSTS = [
-    'localhost',
-    env("APP_HOST"),
 ]
 
 
